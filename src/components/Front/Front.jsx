@@ -1,7 +1,6 @@
 import "./front.css";
 import sun from "/images/icon-star.svg";
-
-export default function Front() {
+export default function Front({ setSubmit, setRate, rate }) {
   let buttons = [1, 2, 3, 4, 5];
   return (
     <>
@@ -14,10 +13,19 @@ export default function Front() {
         </p>
         <div className="buttons-con">
           {buttons.map((el) => (
-            <button className="btn">{el}</button>
+            <button
+              className="btn"
+              onClick={() => setRate(el)}
+              key={el}
+              style={rate === el ? { backgroundColor: "gray" } : {}}
+            >
+              {el}
+            </button>
           ))}
         </div>
-        <button className="yelow">submit</button>
+        <button className="yelow" onClick={() => setSubmit(false)}>
+          submit
+        </button>
       </div>
     </>
   );
